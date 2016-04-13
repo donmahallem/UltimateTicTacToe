@@ -1,6 +1,6 @@
 package com.aichallenge.ultimatetoe.player;
 
-import com.aichallenge.ultimatetoe.field.MacroField;
+import com.aichallenge.ultimatetoe.field.Field;
 
 /**
  * Created by Don on 06.04.2016.
@@ -13,5 +13,9 @@ public abstract class AbstractPlayer {
         this.mPlayerId = pPlayerId;
     }
 
-    public abstract int takeTurn(MacroField field, int... allowed);
+    public abstract int[] takeTurn(Field field, int... allowed);
+
+    public int getPlayerId() {
+        return mPlayerId;
+    }
 }

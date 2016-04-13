@@ -1,7 +1,6 @@
 package com.aichallenge.ultimatetoe.player;
 
 import com.aichallenge.ultimatetoe.field.Field;
-import com.aichallenge.ultimatetoe.field.MacroField;
 
 /**
  * Created by Don on 06.04.2016.
@@ -17,19 +16,19 @@ public class MinMaxPlayer extends AbstractPlayer {
     }
 
     @Override
-    public int takeTurn(MacroField field, int... allowed) {
+    public int[] takeTurn(Field field, int... allowed) {
         if (allowed.length == 1) {
-            return this.takeTurnInt(field, allowed[0]);
         } else {
             int[] take = null;
             for (int i : allowed) {
 
             }
         }
+        return new int[]{0, 0};
     }
 
-    private double takeTurnInt(MacroField field, int x, int y, int currentPlayer, int depth) {
-        MacroField f = new MacroField();
+    private double takeTurnInt(Field field, int x, int y, int currentPlayer, int depth) {
+        Field f = new Field();
         f.copy(field);
         f.put(x, y, currentPlayer);
         final int result = f.getResult();
@@ -54,7 +53,10 @@ public class MinMaxPlayer extends AbstractPlayer {
                 highest = current;
             }
         }
-    }
+
+        /// PRECOMPUTED MACRO MAP AND MICRO MAP AND THEN DEEP WALKING
+        return 0;
+    }/*
 
     private double takeTurnIntMacro(MacroField field, int macro, int currentPlayer, int depth) {
         if (field.get(macro).getResult() == Field.RESULT_OPEN) {
@@ -84,5 +86,5 @@ public class MinMaxPlayer extends AbstractPlayer {
             sum += takeTurnIntMacro(lMacroField, i, pCurrentPlayer == 1 ? 2 : 1, pDepth + 1);
         }
         return sum / num;
-    }
+    }*/
 }
